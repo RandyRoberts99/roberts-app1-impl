@@ -5,6 +5,7 @@
 
 package listapplication;
 
+// Holds data for a single item
 public class ListItem
 {
     /*

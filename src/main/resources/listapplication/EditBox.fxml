@@ -58,7 +58,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="20.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter a valid date:" wrappingWidth="150.13671875" />
+            <Text layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter a valid date: (Optional)" wrappingWidth="246.13671875" />
             <CheckBox id="isCompleted" fx:id="isCompleted" layoutX="472.0" layoutY="53.0" mnemonicParsing="false" text="Completed?" />
             <Button id="confirmButton" fx:id="confirmButton" layoutX="11.0" layoutY="345.0" mnemonicParsing="false" onAction="#checkValidListItem" prefHeight="25.0" prefWidth="575.0" text="Confirm" />
          </children>

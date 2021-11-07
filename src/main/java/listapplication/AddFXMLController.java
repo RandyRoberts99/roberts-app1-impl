@@ -45,6 +45,7 @@ public class AddFXMLController {
 
     private ListItem itemToEdit;
 
+    // Initializes and classes/variables and fills data appropriately with edit item
     @FXML
     void initialize()
     {
@@ -62,6 +63,7 @@ public class AddFXMLController {
         }
     }
 
+    // Checks to see if the users input is valid and if so, will create an item to go into the list
     @FXML
     void checkValidListItem(ActionEvent event)
     {

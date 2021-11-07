@@ -21,14 +21,14 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="helpButton" mnemonicParsing="false" onAction="#openGithubLink" text="About (Guide)" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
       <ListView id="menuList" fx:id="mainList" prefHeight="335.0" prefWidth="600.0" />
       <Button id="addButton" fx:id="addButton" mnemonicParsing="false" onAction="#addListItem" prefHeight="25.0" prefWidth="746.0" text="Add" />
-      <Button id="editButton" fx:id="editButton" mnemonicParsing="false" onAction="#editListItem" prefHeight="25.0" prefWidth="649.0" text="Edit" />
+      <Button id="editButton" fx:id="editButton" mnemonicParsing="false" onAction="#editListItem" prefHeight="25.0" prefWidth="649.0" text="Edit/View" />
       <Button id="deleteButton" fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteListItem" prefHeight="25.0" prefWidth="600.0" text="Delete" />
       <Button id="deleteButton" fx:id="clearButton" mnemonicParsing="false" onAction="#clearList" prefHeight="25.0" prefWidth="600.0" text="Clear" />
       <Button id="filterButton" fx:id="filterButton" layoutX="10.0" layoutY="335.0" mnemonicParsing="false" onAction="#filterList" prefHeight="25.0" prefWidth="746.0" text="Filter" />

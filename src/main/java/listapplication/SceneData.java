@@ -9,9 +9,12 @@ import java.util.List;
 
 public class SceneData
 {
+    // private constructor for utility class
     private SceneData() throws IllegalAccessException {
         throw new IllegalAccessException("Utility Class");
     }
+
+    // All data, getters and setters are compiled nicely in a line to access when needed
 
     private static boolean isSaved;
     private static boolean isLoaded;
@@ -70,5 +73,15 @@ public class SceneData
     public static List<String> getItemListString()
     {
         return itemListString;
+    }
+
+    public static void initializeSceneData()
+    {
+        SceneData.setSaveStatus(false);
+        SceneData.setLoadedStatus(false);
+        SceneData.setEditIndex(-1);
+        SceneData.setItemToEdit(null);
+        SceneData.setItemList(null);
+        SceneData.setItemListString(null);
     }
 }

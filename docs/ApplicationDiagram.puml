@@ -3,36 +3,70 @@
 
 ' The application class will follow the requirements of containing only the launch command, and
 ' enough code to launch the first GUI in the start method.
-class MainApplication
+class ToDoListApplication
 {
 main()
 start(Stage stage)
 }
 
 ' This class deals with all the events inside the app and how they will relate to the
-' other bits of code associated with the app
+' other bits of code associated with the app. The main flow of traffic will be through this class.
 class MainFXMLController
 {
 Button addButton
 Button deleteButton
 Button editButton
+Button filterBUtton
+Button clearButton
 
-ListView<?> mainList
 MenuBar appMenuBar
-
 MenuItem loadButton
 MenuItem saveButton
 MenuItem newListItem
 MenuItem closeButton
 
+ListView<String> mainList
+List<ListItem> toDoList
+ObservableList<String> toDoListString
+ObservableList<String> completeList
+ObservableListM<String> incompleteList
 
+ItemParser itemParser
+ListParser listParser
+ListLoader listLoader
+
+ListItem emptyItem
+String emptyItemString
+
+ListItem editedItem
+int editIndex
+
+boolean isSaved
+boolean isLoaded
+boolean isCompleted
+boolean isIncompleted
+
+int MAX_NUM_LIST_ITEMS
+int currentNumberOfItems
+
+initialize()
 addListItem()
 attemptCloseApp()
 createNewList()
 deleteListItem()
+clearList()
 editListItem()
 loadList()
 saveCurrentList()
+filterList()
+
+switchToEditScreen()
+fillSceneData()
+saveSceneData()
+setCompleteList()
+setIncompleteList()
+setMainList()
+initializeItems()
 }
 ' This will be an object that holds a list of objects that contain data about each
 ' item in the list, hence the name listItem
@@ -43,12 +77,114 @@ class ListItem
     String date
     ListItem(String listGoal, boolean isComplete, String date)
 }
-' This object will hold all the properties of an item in the to do list.
-class List
+
+' Responsible for creating a new edited element and verifying it as a valid edited item
+class AddFXMLController
 {
-    List(ListItem[])
+Button confirmButton
+TextField dayField
+TextArea descriptionField
+TextField monthField
+TextField yearField
+CheckBox isCompleted
+int itemIndex
+
+initialize()
+checkValidListItem()
+
+checkValidDate()
+isEmpty()
+checkValidDescription()
+isNumber()
+editListItem()
+switchToMainScreen()
 }
-MainApplication <|-- MainFXMLController
-List <|-- ListItem
+
+' Responsible for saving the main scenes state and a helper class for passing data
+' between controller classes
+class SceneData
+{
+boolean isSaved
+boolean isLoaded
+
+int editIndex
+ListItem itemToEdit
+
+List<ListItem> itemList
+List<String> itemListString
+
+setSaveStatus()
+setLoadedStatus()
+setEditIndex()
+setItemToEdit()
+setItemList()
+setItemListString()
+
+getSaveStatus()
+getLoadedStatus()
+getEditIndex()
+getItemToEdit()
+getItemList()
+getItemListString()
+
+initializeSceneData()
+}
+
+' Responsible for initializing scene switches
+class SceneSwitcher
+{
+Scene scene
+
+setScene()
+switchTo()
+}
+
+' Responsible for storing each scene and to be referenced by SceneSwitcher
+enum ListScenes
+{
+MAIN,
+EDIT
+
+String fileName
+ListScenes()
+getFileName()
+}
+
+' Responsible for creating parsed text files using the data given in the list object
+class ListParser
+{
+    parseAndSaveFile()
+}
+
+' Responsible for loading a list using saved (unedited, parsed) list text files, and formatting them into
+' an object for use
+class ListLoader
+{
+File listFile
+Scanner reader
+
+loadNewList()
+}
+
+' Responsible for parsing a singular item into a viewable string to be stored in a list of parsed items
+' for viewing by the user
+class ItemParser
+{
+ListItem unparsedItem
+
+createParsedItem()
+}
+
+' Main idea of the abstraction of my program
+ToDoListApplication <|-- MainFXMLController
+MainFXMLController - ListItem
+MainFXMLController - AddFXMLController
+MainFXMLController <|-- SceneData
+MainFXMLController <|-- SceneSwitcher
+SceneSwitcher <|-- ListScenes
+MainFXMLController <|-- ListParser
+MainFXMLController <|-- ListLoader
+MainFXMLController <|-- ItemParser
+
 
 @enduml

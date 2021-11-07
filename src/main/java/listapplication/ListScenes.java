@@ -5,6 +5,7 @@
 
 package listapplication;
 
+// Stores the filenames for scenes
 public enum ListScenes
 {
     MAIN("MainBox.fxml"),

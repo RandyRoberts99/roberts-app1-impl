@@ -5,6 +5,7 @@
 
 package listapplication;
 
+// Creates a single parsed item string for the list of parsed strings to be displayed in the program.
 public class ItemParser
 {
     public String createParsedItem(ListItem unparsedItem)

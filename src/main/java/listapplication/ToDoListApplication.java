@@ -14,17 +14,12 @@ import java.io.IOException;
 
 public class ToDoListApplication extends Application
 {
-
+    // Starts up the main scene, nothing else (Besides initializing SceneData)
     @Override
     public void start(Stage stage) throws IOException
     {
         // Initializing SceneData class to null/default values
-        SceneData.setSaveStatus(false);
-        SceneData.setLoadedStatus(false);
-        SceneData.setEditIndex(-1);
-        SceneData.setItemToEdit(null);
-        SceneData.setItemList(null);
-        SceneData.setItemListString(null);
+        SceneData.initializeSceneData();
 
         Scene mainScene = new Scene(FXMLLoader.load(getClass().getResource("MainBox.fxml")));
         SceneSwitcher.setScene(mainScene);
